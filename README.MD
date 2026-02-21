@@ -549,7 +549,7 @@ docker compose -f docker-compose.prod.yml up -d
 <div align="center">
 
 Made with ❤️ for **LOG2000 — Software Engineering**
-**ISTEAH** | Assignment 1 | 2025–2026
+**ISTEAH** | Assignment 1 | 2026
 
 <img src="docs/assets/logoisteah.jpg" alt="ISTEAH" height="50" />
 
