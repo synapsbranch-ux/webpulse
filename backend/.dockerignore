@@ -1,0 +1,17 @@
+# Docker
+dockerfile
+docker-compose.yml
+.dockerignore
+
+# Environments
+.env
+.env.*
+
+# Python
+__pycache__/
+venv/
+env/
+.pytest_cache/
+
+# Logs
+*.log
