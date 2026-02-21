@@ -1,0 +1,82 @@
+# ===================================================
+# SynapsBranch Backend - requirements.txt
+# Last Update: February 2026
+# ===================================================
+
+# ---- Framework ----
+fastapi==0.115.8
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+# ---- Database ----
+sqlalchemy[asyncio]==2.0.37
+asyncpg==0.30.0
+alembic==1.14.1
+greenlet==3.1.1
+
+# ---- Redis ----
+redis[hiredis]==5.2.1
+
+# ---- Authentication ----
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+
+# ---- Validation & Settings ----
+pydantic==2.10.6
+pydantic-settings==2.7.1
+email-validator==2.2.0
+
+# ---- HTTP Client (for scanners) ----
+httpx==0.28.1
+aiohttp==3.11.12
+
+# ---- Celery (Async Tasks) ----
+celery[redis]==5.4.0
+
+# ---- WebSocket ----
+websockets==14.2
+
+# ---- Scanner: DNS ----
+dnspython==2.7.0
+
+# ---- Scanner: SSL/TLS ----
+sslyze==6.1.0
+
+# ---- Scanner: Performance (Load Testing) ----
+locust==2.32.4
+
+# ---- Scanner: SEO ----
+beautifulsoup4==4.12.3
+lxml==5.3.0
+
+# ---- Scanner: Security ----
+python-owasp-zap-v2.4==0.0.22
+
+# ---- PDF Generation ----
+weasyprint==63.1
+jinja2==3.1.5
+
+# ---- Charts for PDF ----
+matplotlib==3.10.0
+plotly==5.24.1
+kaleido==0.2.1
+
+# ---- Email ----
+resend==2.7.0
+
+# ---- AI ----
+anthropic==0.43.0
+openai==1.61.0
+
+# ---- Utilities ----
+python-dotenv==1.0.1
+pydantic[email]==2.10.6
+
+# ---- Tests ----
+pytest==8.3.4
+pytest-asyncio==0.25.3
+httpx==0.28.1
+
+# ---- Linting ----
+ruff==0.9.6
