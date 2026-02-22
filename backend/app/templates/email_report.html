@@ -19,10 +19,29 @@
             padding: 40px;
             text-align: center;
             border: 1px solid #334155;
-            border-top: 4px solid #10B981;
-        }
 
-        /* Different border color based on score (simulated with green here for simplicity) */
+            border-top: 4px solid {
+                % if score>=90 %
+            }
+
+            #10B981 {
+                % elif score>=70 %
+            }
+
+            #3B82F6 {
+                % elif score>=50 %
+            }
+
+            #F59E0B {
+                % else %
+            }
+
+            #EF4444 {
+                % endif %
+            }
+
+            ;
+        }
 
         .logo {
             font-size: 24px;
