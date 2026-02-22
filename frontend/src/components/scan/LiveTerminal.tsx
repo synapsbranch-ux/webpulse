@@ -51,7 +51,7 @@ export function LiveTerminal({ logs, isScanning }: LiveTerminalProps) {
                     <AnimatePresence initial={false}>
                         {logs.map((log, i) => (
                             <motion.div
-                                key={log.id || i}
+                                key={`${log.timestamp}-${i}`}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.2 }}
@@ -85,3 +85,4 @@ export function LiveTerminal({ logs, isScanning }: LiveTerminalProps) {
         </div>
     );
 }
+

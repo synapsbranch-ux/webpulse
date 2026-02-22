@@ -5,6 +5,8 @@ import { Report } from '@/types/report';
 export function useReport(scanId: string) {
     const [report, setReport] = useState<Report | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [isDownloading, setIsDownloading] = useState(false);
+    const [isEmailing, setIsEmailing] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     const getReport = useCallback(async () => {
@@ -25,6 +27,7 @@ export function useReport(scanId: string) {
 
     const downloadPdf = useCallback(async () => {
         if (!scanId) return;
+        setIsDownloading(true);
         try {
             const response = await api.get(`/reports/${scanId}/pdf`, {
                 responseType: 'blob',
@@ -38,17 +41,23 @@ export function useReport(scanId: string) {
             if (link.parentNode) link.parentNode.removeChild(link);
         } catch (e) {
             throw new Error('Erreur de téléchargement du PDF');
+        } finally {
+            setIsDownloading(false);
         }
     }, [scanId]);
 
     const sendEmail = useCallback(async (email: string) => {
         if (!scanId) return;
+        setIsEmailing(true);
         try {
             await api.post(`/reports/${scanId}/email`, { email });
         } catch (e) {
             throw new Error("Erreur d'envoi du rapport");
+        } finally {
+            setIsEmailing(false);
         }
     }, [scanId]);
 
-    return { report, isLoading, error, getReport, downloadPdf, sendEmail };
+    return { report, isLoading, isDownloading, isEmailing, error, getReport, downloadPdf, sendEmail };
 }
+

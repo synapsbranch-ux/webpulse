@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, CircleDashed, Loader2 } from "lucide-react";
-import { SCAN_PHASES } from "@/lib/constants";
+import { PHASES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 interface PhaseIndicatorProps {
@@ -10,14 +10,14 @@ interface PhaseIndicatorProps {
 
 export function PhaseIndicator({ currentPhase }: PhaseIndicatorProps) {
     // Déterminer l'index actuel
-    const currentIndex = SCAN_PHASES.findIndex(p => p.id === currentPhase);
+    const currentIndex = PHASES.findIndex((p: any) => p.id === currentPhase);
     // Si -1, c'est probablement terminé ou initié avec un ID inconnu
-    const activeIndex = currentIndex === -1 && currentPhase === 'completed' ? SCAN_PHASES.length : currentIndex;
+    const activeIndex = currentIndex === -1 && currentPhase === 'completed' ? PHASES.length : currentIndex;
 
     return (
         <div className="w-full overflow-x-auto pb-4 hide-scrollbar">
             <div className="flex items-center min-w-max px-2">
-                {SCAN_PHASES.map((phase, index) => {
+                {PHASES.map((phase: any, index: number) => {
                     const isCompleted = index < activeIndex;
                     const isCurrent = index === activeIndex;
                     const isPending = index > activeIndex;
@@ -55,7 +55,7 @@ export function PhaseIndicator({ currentPhase }: PhaseIndicatorProps) {
                             </div>
 
                             {/* La ligne de connexion */}
-                            {index < SCAN_PHASES.length - 1 && (
+                            {index < PHASES.length - 1 && (
                                 <div className="w-16 sm:w-24 h-1 mx-2 rounded-full overflow-hidden bg-muted relative">
                                     <div
                                         className={cn(
@@ -75,3 +75,4 @@ export function PhaseIndicator({ currentPhase }: PhaseIndicatorProps) {
         </div>
     );
 }
+

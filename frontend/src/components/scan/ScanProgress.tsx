@@ -1,7 +1,7 @@
 "use client";
 
 import { Progress } from "@/components/ui/progress";
-import { SCAN_PHASES } from "@/lib/constants";
+import { PHASES } from "@/lib/constants";
 
 interface ScanProgressProps {
     currentPhase: string;
@@ -14,12 +14,12 @@ export function ScanProgress({ currentPhase, overallProgress }: ScanProgressProp
 
         if (currentPhase === 'completed') return 100;
 
-        const currentIndex = SCAN_PHASES.findIndex(p => p.id === currentPhase);
+        const currentIndex = PHASES.findIndex((p: any) => p.id === currentPhase);
         if (currentIndex === -1) return 0;
 
         // Si on a 6 phases, on calcule la progression de base
         // Ex: phase 0 -> 10%, phase 5 -> 90% (jamais 100% avant "completed")
-        const step = 90 / SCAN_PHASES.length;
+        const step = 90 / PHASES.length;
         return Math.floor(10 + currentIndex * step);
     };
 
@@ -40,3 +40,4 @@ export function ScanProgress({ currentPhase, overallProgress }: ScanProgressProp
         </div>
     );
 }
+
