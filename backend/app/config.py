@@ -37,9 +37,15 @@ class Settings(BaseSettings):
     EMAIL_FROM: str = "SynapsBranch <reports@synapsbranch.app>"
 
     # --- AI ---
-    AI_PROVIDER: str = "claude"
+    AI_PROVIDER: str = "gemini"
     ANTHROPIC_API_KEY: str = ""
     OPENAI_API_KEY: str = ""
+    GOOGLE_GEMINI_KEY: str = ""
+    
+    # --- AWS ---
+    AWS_KEY_ID: str = ""
+    AWS_KEY_SECRET: str = ""
+    AWS_REGION: str = "us-east-1"
 
     # --- Frontend ---
     NEXT_PUBLIC_API_URL: str = "http://localhost:8000"

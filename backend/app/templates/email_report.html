@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A;
+            color: #F8FAFC;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1E293B;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #334155;
+            border-top: 4px solid #10B981;
+        }
+
+        /* Different border color based on score (simulated with green here for simplicity) */
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6366F1;
+            margin-bottom: 24px;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #94A3B8;
+            margin-bottom: 32px;
+            font-family: monospace;
+        }
+
+        .score-box {
+            background-color: #0F172A;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            border: 2px solid #334155;
+        }
+
+        .score {
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .text {
+            color: #CBD5E1;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #475569;
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">synapsbranch_</div>
+
+        <div class="title">Analyse terminée avec succès</div>
+        <div class="subtitle">Cible : {{ scan_url }}</div>
+
+        <div class="score-box">
+            <span class="score"
+                style="color: {% if score >= 90 %}#10B981{% elif score >= 70 %}#3B82F6{% elif score >= 50 %}#F59E0B{% else %}#EF4444{% endif %};">
+                {{ score }}
+            </span>
+        </div>
+
+        <div class="text">
+            Bonjour <strong>{{ user_name }}</strong>,<br><br>
+            Nos robots ont terminé l'analyse complète de votre infrastructure web. Votre rapport avec synthèse IA est
+            prêt et attaché à cet email au format PDF.<br><br>
+            Vous y trouverez les métriques détaillées pour le DNS, le SSL, la Performance, la Sécurité et le SEO, ainsi
+            que nos recommandations prioritaires.
+        </div>
+
+        <div class="footer">
+            Connectez-vous à votre tableau de bord pour voir les résultats en direct.<br>
+            © 2026 synapsbranch. Tous droits réservés.
+        </div>
+    </div>
+</body>
+
+</html>
