@@ -17,6 +17,10 @@ greenlet==3.1.1
 # ---- Redis ----
 redis[hiredis]==5.2.1
 
+# ---- Config ----
+pydantic-settings==2.7.1
+python-dotenv==1.0.1
+
 # ---- Authentication ----
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
