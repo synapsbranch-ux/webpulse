@@ -1,19 +1,37 @@
 import Link from "next/link";
+import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { SocialButtons } from "@/components/auth/SocialButtons";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function LoginPage() {
     return (
         <Card className="border-border/50 shadow-2xl shadow-brand-500/10">
-            <CardHeader className="space-y-2 text-center">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500 text-white font-bold text-xl">
-                    SB
+            <CardHeader className="space-y-4 text-center">
+                <div className="flex justify-start">
+                    <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-foreground -ml-2">
+                        <Link href="/">
+                            <ArrowLeft className="mr-2 h-4 w-4" />
+                            Retour à l'accueil
+                        </Link>
+                    </Button>
                 </div>
-                <CardTitle className="text-2xl">Bon retour</CardTitle>
-                <CardDescription>
-                    Connectez-vous à votre compte synapsbranch
-                </CardDescription>
+                <div className="mx-auto flex h-20 w-20 items-center justify-center relative">
+                    <Image
+                        src="/assets/synapsbranch.png"
+                        alt="Logo Synapsbranch"
+                        fill
+                        className="object-contain"
+                    />
+                </div>
+                <div>
+                    <CardTitle className="text-2xl">Bon retour</CardTitle>
+                    <CardDescription>
+                        Connectez-vous à votre compte synapsbranch
+                    </CardDescription>
+                </div>
             </CardHeader>
             <CardContent className="space-y-4">
                 <SocialButtons />

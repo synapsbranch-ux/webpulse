@@ -145,7 +145,7 @@ export default function LiveScanPage({ params }: { params: Promise<{ id: string 
                         <CardContent>
                             <LiveLineChart
                                 dataStream={metricsStream}
-                                dataKey="responseTime"
+                                dataKey="avg_response_time"
                                 color="#f59e0b"
                                 name="ms"
                             />

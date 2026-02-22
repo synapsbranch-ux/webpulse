@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "Link";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutDashboard, History, Settings, Zap, ShieldAlert, BarChart3, Clock, Target } from "lucide-react";
 import { cn } from "@/lib/utils";

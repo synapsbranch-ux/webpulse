@@ -11,5 +11,6 @@ export function useAuth() {
         }
     }, [hydrate, fetchUser, user]);
 
-    return { user, isAuthenticated, isLoading, login, register, logout };
+    return { user, isAuthenticated, isLoading, login, register, logout, fetchUser };
 }
+
