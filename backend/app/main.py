@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.api.v1.router import api_router
-from app.websocket.manager import connection_manager
+from app.websocket.manager import ws_manager
 
 # Note: We rely on Alembic for DB migrations, 
 # but we could optionally create tables here if desired.
@@ -43,6 +43,9 @@ if settings.CORS_ORIGINS:
         allow_headers=["*"],
     )
 
+import os
+os.makedirs("static/reports", exist_ok=True)
+
 # Static files for PDF reports
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -52,7 +55,7 @@ app.include_router(api_router, prefix="/api/v1")
 # WebSocket Route
 @app.websocket("/ws/scan/{scan_id}")
 async def websocket_endpoint(websocket, scan_id: str):
-    await connection_manager.connect(scan_id, websocket)
+    await ws_manager.connect(scan_id, websocket)
 
 # Healthcheck
 @app.get("/", tags=["Health"])

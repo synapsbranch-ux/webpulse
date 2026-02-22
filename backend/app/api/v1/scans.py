@@ -7,14 +7,14 @@ from uuid import UUID
 from app.core.database import get_db
 from app.api.deps import get_current_user
 from app.models.user import User
-from app.models.scan import Scan, ScanResult
-from app.schemas.scan import ScanCreate, ScanResponse, ScanListResponse
+from app.models.scan import Scan
+from app.models.scan_result import ScanResult
+from app.schemas.scan import ScanCreate, ScanSchema
 from app.workers.tasks import run_scan_task
-from app.schemas.report import ReportResponse
 
 router = APIRouter()
 
-@router.post("", response_model=ScanResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=ScanSchema, status_code=status.HTTP_201_CREATED)
 async def create_scan(
     scan_in: ScanCreate,
     db: AsyncSession = Depends(get_db),
@@ -37,7 +37,7 @@ async def create_scan(
     
     return scan
 
-@router.get("", response_model=list[ScanListResponse])
+@router.get("", response_model=list[ScanSchema])
 async def list_scans(
     skip: int = 0,
     limit: int = 100,
@@ -52,7 +52,7 @@ async def list_scans(
     scans = result.scalars().all()
     return scans
 
-@router.get("/{scan_id}", response_model=ScanResponse)
+@router.get("/{scan_id}", response_model=ScanSchema)
 async def get_scan(
     scan_id: UUID,
     db: AsyncSession = Depends(get_db),

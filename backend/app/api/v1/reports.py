@@ -8,13 +8,14 @@ from uuid import UUID
 from app.core.database import get_db
 from app.api.deps import get_current_user
 from app.models.user import User
-from app.models.scan import Report, Scan
-from app.schemas.report import ReportResponse
+from app.models.scan import Scan
+from app.models.report import Report
+from app.schemas.report import ReportSchema
 from app.services.email_service import EmailService
 
 router = APIRouter()
 
-@router.get("/{scan_id}", response_model=ReportResponse)
+@router.get("/{scan_id}", response_model=ReportSchema)
 async def get_report(
     scan_id: UUID,
     db: AsyncSession = Depends(get_db),

@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase
-
+from app.config import settings
 
 class Base(DeclarativeBase):
     """Base class for all SQLAlchemy models."""
@@ -39,11 +39,19 @@ def init_db(database_url: str, echo: bool = False):
         expire_on_commit=False,
     )
 
+def _ensure_initialized():
+    global _session_factory
+    if _session_factory is None:
+        init_db(str(settings.DATABASE_URL))
+
+def async_session_maker():
+    """Returns a new AsyncSession. Used by Celery workers."""
+    _ensure_initialized()
+    return _session_factory()
 
 async def get_db() -> AsyncSession:
     """FastAPI dependency: yields a database session per request."""
-    if _session_factory is None:
-        raise RuntimeError("Database not initialized. Call init_db() first.")
+    _ensure_initialized()
     async with _session_factory() as session:
         try:
             yield session

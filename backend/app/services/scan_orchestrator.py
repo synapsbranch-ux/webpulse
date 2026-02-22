@@ -5,8 +5,9 @@ from typing import Dict, Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.scan import Scan, ScanStatus, ScanResult
-from app.websocket.manager import connection_manager
+from app.models.scan import Scan, ScanStatus
+from app.models.scan_result import ScanResult
+from app.websocket.manager import ws_manager
 from app.scanners.dns_scanner import DNSScanner
 from app.scanners.ssl_scanner import SSLScanner
 from app.scanners.performance_scanner import PerformanceScanner
@@ -35,7 +36,7 @@ class ScanOrchestrator:
     async def _send_ws_message(self, message: dict) -> None:
         """Helper to send a message via WebSocket, catching and ignoring disconnection errors."""
         try:
-            await connection_manager.send_to_scan(str(self.scan.id), message)
+            await ws_manager.send_to_scan(str(self.scan.id), message)
         except Exception as e:
             logger.warning(f"Failed to send WS message for scan {self.scan.id}: {e}")
 
