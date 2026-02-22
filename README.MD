@@ -20,6 +20,9 @@
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE.txt)
+[![Security](https://img.shields.io/badge/Security-Policy-blue)](SECURITY.md)
+[![Contributing](https://img.shields.io/badge/Contributing-Guidelines-orange)](CONTRIBUTING.md)
+
 
 <br/>
 
@@ -132,7 +135,7 @@ Results are displayed **in real time** on a live dashboard via WebSocket, then a
 │                                   └──────────────────────┘           │
 └──────────────────────────────────────────────────────────────────────┘
 
-Services externes :  Resend  │  Google OAuth  │  GitHub OAuth  │  Claude/OpenAI
+External Services: Resend │ Google OAuth │ GitHub OAuth │ Claude/OpenAI
 ```
 
 ### Pipeline WebSocket (Live Testing)
@@ -283,8 +286,8 @@ Make sure you have the following tools installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-org/synapsbranch.git
-cd synapsbranch
+git clone https://github.com/synapsbranch-ux/webpulse.git
+cd webpulse
 ```
 
 ### 2. Configure environment variables
@@ -540,6 +543,7 @@ docker compose -f docker-compose.prod.yml up -d
 | **Lead Developer** | JOSEPH Samuel Jonathan |
 | **Supervising Instructor** | Prof. Dupuy Rony Charles |
 | **Institution** | Institut des Sciences, des Technologies et des Études Avancées d'Haïti (ISTEAH) |
+| **Email** | [isteah.josephsamuel@gmail.com](mailto:isteah.josephsamuel@gmail.com) |
 | **Course** | LOG2000 — Software Engineering |
 
 </div>
@@ -551,6 +555,9 @@ docker compose -f docker-compose.prod.yml up -d
 Made with ❤️ for **LOG2000 — Software Engineering**
 **ISTEAH** | Assignment 1 | 2026
 
+[Security Policy](SECURITY.md) • [Contributing](CONTRIBUTING.md) • [Code of Conduct](CODE_OF_CONDUCT.md) • [Support](SUPPORT.md)
+
 <img src="docs/assets/logoisteah.jpg" alt="ISTEAH" height="50" />
+
 
 </div>

@@ -1,4 +1,4 @@
-# 🚀 WebPulse — Plan de Projet Complet
+# 🚀 synapsbranch — Plan de Projet Complet
 
 > **Plateforme d'Analyse, de Performance et de Sécurité Web Automatisée avec Génération de Rapports IA**
 
@@ -33,7 +33,7 @@
 
 ### Concept
 
-WebPulse est une plateforme SaaS qui permet à un utilisateur de soumettre l'URL de son site web et de lancer automatiquement une batterie complète de tests couvrant la performance, la sécurité, la connectivité, le SSL et le SEO. Les résultats sont affichés en temps réel dans un dashboard live, puis un rapport complet est généré par une IA, formaté en PDF avec graphiques et envoyé par email.
+synapsbranch est une plateforme SaaS qui permet à un utilisateur de soumettre l'URL de son site web et de lancer automatiquement une batterie complète de tests couvrant la performance, la sécurité, la connectivité, le SSL et le SEO. Les résultats sont affichés en temps réel dans un dashboard live, puis un rapport complet est généré par une IA, formaté en PDF avec graphiques et envoyé par email.
 
 ### Flux Utilisateur Principal
 
@@ -170,7 +170,7 @@ Services externes :
 ## 4. Structure du Projet
 
 ```
-webpulse/
+synapsbranch/
 ├── docker-compose.yml
 ├── docker-compose.prod.yml
 ├── .env.example
@@ -831,7 +831,7 @@ Le dashboard de scan en live affiche :
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│  WebPulse — Scanning https://example.com                     │
+│  synapsbranch — Scanning https://example.com                     │
 │  ══════════════════════════════════════════                   │
 │                                                              │
 │  Progress: ████████████░░░░░░░░ 62%   Phase 3/5             │
@@ -917,7 +917,7 @@ Génère un rapport d'analyse structuré en JSON avec :
 
 ```
 ┌─────────────────────────────────────────┐
-│  WEBPULSE — RAPPORT D'ANALYSE           │
+│  synapsbranch — RAPPORT D'ANALYSE           │
 │  https://example.com                     │
 │  Généré le 15 janvier 2025              │
 ├─────────────────────────────────────────┤
@@ -1003,12 +1003,12 @@ class EmailService:
         })
 
         resend.Emails.send({
-            "from": "WebPulse <reports@webpulse.app>",
+            "from": "synapsbranch <reports@synapsbranch.app>",
             "to": [user.email],
-            "subject": f"Rapport WebPulse — {scan.url} ({scan.overall_score}/100)",
+            "subject": f"Rapport synapsbranch — {scan.url} ({scan.overall_score}/100)",
             "html": html,
             "attachments": [{
-                "filename": f"webpulse-report-{scan.id}.pdf",
+                "filename": f"synapsbranch-report-{scan.id}.pdf",
                 "content": list(pdf_content),
             }]
         })
@@ -1017,7 +1017,7 @@ class EmailService:
 ### 13.3 Template Email du Rapport
 
 L'email contient :
-- Header avec le logo WebPulse
+- Header avec le logo synapsbranch
 - Score global en grand avec code couleur (vert/jaune/rouge)
 - Mini-barres pour chaque catégorie
 - Nombre de problèmes critiques / warnings
@@ -1094,7 +1094,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://user:pass@db:5432/webpulse
+      - DATABASE_URL=postgresql://user:pass@db:5432/synapsbranch
       - REDIS_URL=redis://redis:6379/0
       - RESEND_API_KEY=${RESEND_API_KEY}
       - JWT_SECRET=${JWT_SECRET}
@@ -1111,7 +1111,7 @@ services:
     build: ./backend
     command: celery -A app.workers.celery_app worker --loglevel=info
     environment:
-      - DATABASE_URL=postgresql://user:pass@db:5432/webpulse
+      - DATABASE_URL=postgresql://user:pass@db:5432/synapsbranch
       - REDIS_URL=redis://redis:6379/0
     depends_on:
       - db
@@ -1122,7 +1122,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=webpulse
+      - POSTGRES_DB=synapsbranch
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=pass
     volumes:
@@ -1274,7 +1274,7 @@ volumes:
 
 | Route | Page | Description |
 |---|---|---|
-| `/` | Landing Page | Présentation de WebPulse, CTA |
+| `/` | Landing Page | Présentation de synapsbranch, CTA |
 | `/login` | Connexion | Email/MDP + Google + GitHub |
 | `/register` | Inscription | Formulaire + OAuth |
 | `/verify-email` | Vérification | Confirmation de l'email |
@@ -1434,7 +1434,7 @@ POST /api/v1/scans { "url": "https://example.com" }
 
 ```env
 # ──── Database ────
-DATABASE_URL=postgresql://user:password@db:5432/webpulse
+DATABASE_URL=postgresql://user:password@db:5432/synapsbranch
 
 # ──── Redis ────
 REDIS_URL=redis://redis:6379/0
@@ -1453,7 +1453,7 @@ GITHUB_CLIENT_SECRET=xxx
 
 # ──── Email (Resend) ────
 RESEND_API_KEY=re_xxxxxxxxxxxx
-EMAIL_FROM=WebPulse <reports@webpulse.app>
+EMAIL_FROM=synapsbranch <reports@synapsbranch.app>
 
 # ──── AI ────
 AI_PROVIDER=claude    # ou "openai"
@@ -1467,7 +1467,7 @@ NEXTAUTH_SECRET=your-nextauth-secret
 NEXTAUTH_URL=http://localhost:3000
 
 # ──── App ────
-APP_NAME=WebPulse
+APP_NAME=synapsbranch
 APP_ENV=development     # development | production
 CORS_ORIGINS=http://localhost:3000
 ```

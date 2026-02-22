@@ -22,7 +22,7 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "WebPulse API is running", "version": "1.0.0"}
+    return {"message": "synapsbranch API is running", "version": "1.0.0"}
 
 
 @app.get("/health")
